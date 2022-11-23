@@ -25,7 +25,7 @@ public class BookService {
 
         List<BookDTO> allbooks = new ArrayList<>();
         for (Book book : all) {
-            allbooks.add(new BookDTO(book.getId(),book.getName(),book.getAuthor().getName()));
+            allbooks.add(new BookDTO(book.getId(),book.getName(),book.getAuthor().getName(),book.getPublisher().getName()));
         }
         return allbooks;
     }
