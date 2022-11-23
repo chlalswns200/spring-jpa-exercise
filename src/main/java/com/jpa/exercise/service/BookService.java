@@ -15,11 +15,9 @@ import java.util.Optional;
 public class BookService {
 
     private final BookRepository bookRepository;
-    private final AuthorRepository archRepository;
 
     public BookService(BookRepository bookRepository, AuthorRepository archRepository) {
         this.bookRepository = bookRepository;
-        this.archRepository = archRepository;
     }
 
     public List<BookDTO> bookList() {
@@ -27,8 +25,7 @@ public class BookService {
 
         List<BookDTO> allbooks = new ArrayList<>();
         for (Book book : all) {
-            Optional<Author> byId = archRepository.findById(Long.parseLong(book.getAuthorId()));
-            allbooks.add(new BookDTO(book.getId(),book.getName(),byId.get().getName()));
+            allbooks.add(new BookDTO(book.getId(),book.getName(),book.getAuthor().getName()));
         }
         return allbooks;
     }
