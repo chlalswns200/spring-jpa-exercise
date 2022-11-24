@@ -4,6 +4,7 @@ import com.jpa.exercise.domain.Hospital;
 import com.jpa.exercise.domain.Review;
 import com.jpa.exercise.domain.dto.ReviewCreateRequest;
 import com.jpa.exercise.domain.dto.ReviewCreateResponse;
+import com.jpa.exercise.domain.dto.ReviewResponse;
 import com.jpa.exercise.repository.HospitalRepository;
 import com.jpa.exercise.repository.ReviewRepository;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,14 @@ public class ReviewService {
         this.hospitalRepository = hospitalRepository;
     }
 
-    public ReviewCreateResponse add(ReviewCreateRequest reviewCreateRequest) {
-        Optional<Hospital> hospital = hospitalRepository.findById(reviewCreateRequest.getHospitalId());
+    public ReviewResponse getOne(Long id) {
+        Optional<Review> byId = reviewRepository.findById(id);
+        Review review = byId.get();
+        return new ReviewResponse(review.getId(),review.getPatientName(),review.getTitle(),review.getContent());
+    }
+
+    public ReviewCreateResponse add(ReviewCreateRequest reviewCreateRequest,Integer id) {
+        Optional<Hospital> hospital = hospitalRepository.findById(id);
         Review review = Review.builder()
                 .title(reviewCreateRequest.getTitle())
                 .content(reviewCreateRequest.getContent())
