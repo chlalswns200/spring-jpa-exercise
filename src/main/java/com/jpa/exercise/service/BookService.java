@@ -1,15 +1,13 @@
 package com.jpa.exercise.service;
 
-import com.jpa.exercise.domain.Author;
 import com.jpa.exercise.domain.Book;
-import com.jpa.exercise.domain.BookDTO;
+import com.jpa.exercise.domain.dto.BookDTO;
 import com.jpa.exercise.repository.AuthorRepository;
 import com.jpa.exercise.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BookService {

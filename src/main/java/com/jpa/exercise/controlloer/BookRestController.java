@@ -1,7 +1,6 @@
 package com.jpa.exercise.controlloer;
 
-import com.jpa.exercise.domain.Book;
-import com.jpa.exercise.domain.BookDTO;
+import com.jpa.exercise.domain.dto.BookDTO;
 import com.jpa.exercise.service.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.jpa.exercise.domain;
+package com.jpa.exercise.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
