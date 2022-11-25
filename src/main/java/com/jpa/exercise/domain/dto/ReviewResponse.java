@@ -15,4 +15,5 @@ public class ReviewResponse {
 
     private String title;
     private String content;
+    private String hospitalName;
 }

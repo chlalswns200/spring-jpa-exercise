@@ -25,7 +25,8 @@ public class ReviewService {
     public ReviewResponse getOne(Long id) {
         Optional<Review> byId = reviewRepository.findById(id);
         Review review = byId.get();
-        return new ReviewResponse(review.getId(),review.getPatientName(),review.getTitle(),review.getContent());
+        review.getHospital().getName();
+        return new ReviewResponse(review.getId(),review.getPatientName(),review.getTitle(),review.getContent(),review.getHospital().getName());
     }
 
     public ReviewCreateResponse add(ReviewCreateRequest reviewCreateRequest,Integer id) {

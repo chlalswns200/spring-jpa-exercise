@@ -40,7 +40,7 @@ public class HospitalService {
         Hospital hospital = byId.get();
         List<Review> reviews = hospital.getReviews();
         for (Review review : reviews) {
-            rr.add(new ReviewResponse(review.getId(),review.getPatientName(),review.getTitle(),review.getContent()));
+            rr.add(new ReviewResponse(review.getId(),review.getPatientName(),review.getTitle(),review.getContent(),review.getHospital().getName()));
         }
         return rr;
     }
