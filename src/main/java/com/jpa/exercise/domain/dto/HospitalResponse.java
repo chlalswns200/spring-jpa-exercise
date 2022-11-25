@@ -14,6 +14,6 @@ public class HospitalResponse {
 
     private String hospitalName;
     private String roadNameAddress;
-    private List<ReviewResponse> hospitalReviews;
+    private List<AllReviewsResponse> hospitalReviews;
 
 }

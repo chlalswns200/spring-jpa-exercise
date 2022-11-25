@@ -2,6 +2,7 @@ package com.jpa.exercise.service;
 
 import com.jpa.exercise.domain.Hospital;
 import com.jpa.exercise.domain.Review;
+import com.jpa.exercise.domain.dto.AllReviewsResponse;
 import com.jpa.exercise.domain.dto.HospitalResponse;
 import com.jpa.exercise.domain.dto.ReviewResponse;
 import com.jpa.exercise.repository.HospitalRepository;
@@ -23,12 +24,12 @@ public class HospitalService {
 
     public HospitalResponse hospitalAndReviews(Integer id) {
 
-        List<ReviewResponse> reviewResponses = oneReviews(id);
+        List<AllReviewsResponse> allReviewsResponses = oneReviewsForAll(id);
 
         Optional<Hospital> byId = hospitalRepository.findById(id);
         Hospital hospital = byId.get();
 
-        return new HospitalResponse(hospital.getName(), hospital.getRoadNameAddress(), reviewResponses);
+        return new HospitalResponse(hospital.getName(), hospital.getRoadNameAddress(), allReviewsResponses);
 
     }
 
@@ -41,6 +42,19 @@ public class HospitalService {
         List<Review> reviews = hospital.getReviews();
         for (Review review : reviews) {
             rr.add(new ReviewResponse(review.getId(),review.getPatientName(),review.getTitle(),review.getContent(),review.getHospital().getName()));
+        }
+        return rr;
+    }
+
+    public List<AllReviewsResponse> oneReviewsForAll(Integer id) {
+
+        List<AllReviewsResponse> rr = new ArrayList<>();
+
+        Optional<Hospital> byId = hospitalRepository.findById(id);
+        Hospital hospital = byId.get();
+        List<Review> reviews = hospital.getReviews();
+        for (Review review : reviews) {
+            rr.add(new AllReviewsResponse(review.getId(),review.getPatientName(),review.getTitle(),review.getContent()));
         }
         return rr;
     }
